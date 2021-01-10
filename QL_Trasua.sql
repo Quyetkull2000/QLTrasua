@@ -87,7 +87,14 @@ Go
 Insert into Account values 
 	('admin','Admin','admin123',1),
 	('Quyetkull',N'Nhân viên','Quyetkull2000',0),
-	('Quangbess',N'Nhân viên','Quangbees2000',0)
+	('Quangbess',N'Nhân viên','Quangbees2000',0),
+	('NgoTrang',N'Nhân viên','NgoTrang2307',0),
+	('Thuyhang',N'Nhân viên','Thuyhang2000',0),
+	('Lehuyen',N'Nhân viên','Lehuyen2000',0),
+	('Phithuy',N'Nhân viên','Phithuybka',0),
+	('Ngocluu',N'Nhân viên','Ngocluu91',0),
+	('Minhhang',N'Nhân viên','Minhhang97',0),
+	('Thanhlong',N'Nhân viên','Thanhlongbro',0)
 	
 GO
 

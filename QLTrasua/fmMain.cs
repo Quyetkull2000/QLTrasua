@@ -57,7 +57,7 @@ namespace QLTrasua
                 Button btn = new Button()
                 {
                     Width = 100,
-                    Height = 100,
+                    Height = 80,
                     Text = item.Name + Environment.NewLine + item.Status
 
                 };
@@ -66,6 +66,32 @@ namespace QLTrasua
                 if (item.Status == "Trống") { btn.BackColor = Color.LimeGreen; }
                 else btn.BackColor = Color.Orange;
                 pnTable.Controls.Add(btn);
+            }
+        }
+
+
+        void LoadCate()
+        {
+            pnCate.Controls.Clear();
+            List<Category> tableCate = CategoryDAO.Instance.GetListCategory();
+
+            foreach (Category item in tableCate)
+            {
+                Button btnCate = new Button()
+                {
+                    Width = 150,
+                    Height = 60,
+                    BackColor = Color.Red /*BurlyWood*/,
+                    Text = item.Name + Environment.NewLine
+
+                };
+                btnCate.Click += (sender, e) =>
+                {
+                    int tableCategory = ((sender as Button).Tag as Category).ID;
+                    LoadFood(tableCategory);
+                };
+                btnCate.Tag = item;
+                pnCate.Controls.Add(btnCate);
             }
         }
         void LoadFood(int id)
@@ -78,7 +104,7 @@ namespace QLTrasua
             {
                 Button btnFood = new Button()
                 {
-                    Width = 160,
+                    Width = 140,
                     Height = 90,
                     BackColor = Color.PaleGoldenrod,
                     Text = item.Name + Environment.NewLine + item.Price
@@ -143,30 +169,6 @@ namespace QLTrasua
             }
         }
 
-        void LoadCate()
-        {
-            pnCate.Controls.Clear();
-            List<Category> tableCate = CategoryDAO.Instance.GetListCategory();
-
-            foreach (Category item in tableCate)
-            {
-                Button btnCate = new Button()
-                {
-                    Width = 100,
-                    Height = 60,
-                    BackColor = Color.BurlyWood,
-                    Text = item.Name + Environment.NewLine
-
-                };
-                btnCate.Click += (sender, e) =>
-                {
-                    int tableCategory = ((sender as Button).Tag as Category).ID;
-                    LoadFood(tableCategory);
-                };
-                btnCate.Tag = item;
-                pnCate.Controls.Add(btnCate);
-            }
-        }
 
         void ShowBill(int id)
         {
@@ -196,20 +198,6 @@ namespace QLTrasua
             lbTableName.Text = btn.Text.Split('\n')[0];
         }
 
-        //private void cbbCategory_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    int id = 0;
-
-        //    ComboBox cb = sender as ComboBox;
-
-        //    if (cb.SelectedItem == null)
-        //        return;
-
-        //    Category selected = cb.SelectedItem as Category;
-        //    id = selected.ID;
-
-        //    LoadFoodListByCategoryID(id);
-        //}
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
            
@@ -272,7 +260,26 @@ namespace QLTrasua
             fmAccount Doanhthu = new fmAccount();
             Doanhthu.ShowDialog();
         }
-    
+
+     
+
+        private void fmMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+
+            fmLogin logout = new fmLogin();
+            this.Hide();
+            logout.ShowDialog();
+        }
     }
 }
 #endregion

@@ -45,7 +45,7 @@ namespace QLTrasua
                 fmMain f = new fmMain(UserName, AccountDAO.Instance.GetTypeAccount(UserName));
                 this.Hide();
                 f.ShowDialog();
-                this.Show();
+                //this.Show();
             }
             else
             {
