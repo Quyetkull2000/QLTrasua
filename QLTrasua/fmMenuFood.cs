@@ -15,6 +15,8 @@ namespace QLTrasua
     public partial class fmMenuFood : Form
     {
         BindingSource foodList = new BindingSource();
+    
+
         public fmMenuFood()
         {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace QLTrasua
         void Load()
         {
             dtgvFood.DataSource = foodList;
+            
             LoadListFood();
             AddFoodBinding();
             LoadCategoryIntoCombobox(cbFoodCategory);

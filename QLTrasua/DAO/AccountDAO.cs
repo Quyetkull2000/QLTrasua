@@ -32,7 +32,10 @@ namespace QLTrasua.DAO
 
 
 
-
+        public DataTable GetListAccount()
+        {
+            return DataProvider.Instance.ExecuteQuery("Select Username, Displayname, Type from Account");
+        }
 
 
 
@@ -72,15 +75,7 @@ namespace QLTrasua.DAO
             throw new NotImplementedException();
         }
 
-        public DataTable GetListAccount()
-        {
-            string qr = "SELECT Account.UserName as [Tài khoản], Account.DisplayName as [Tên hiển thị], " +
-                "(CASE Account.Type " +
-                "WHEN '01' THEN N'Quản lý' " +
-                "ELSE N'Nhân viên'END) AS[Loại tài khoản] " +
-                "FROM Account ";
-            return DataProvider.Instance.ExecuteQuery(qr);
-        }
+       
 
         public Account GetAccountByUserName(string UserName)
         {

@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.USP_RecipeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bt_ViewNhanvien = new System.Windows.Forms.Button();
-            this.dg_ViewNhanvien = new System.Windows.Forms.DataGridView();
+            this.dtgvAccount = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.USP_RecipeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_ViewNhanvien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
             this.SuspendLayout();
             // 
             // USP_RecipeBindingSource
@@ -45,43 +45,50 @@
             // bt_ViewNhanvien
             // 
             this.bt_ViewNhanvien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_ViewNhanvien.Location = new System.Drawing.Point(98, 91);
+            this.bt_ViewNhanvien.Location = new System.Drawing.Point(131, 112);
+            this.bt_ViewNhanvien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bt_ViewNhanvien.Name = "bt_ViewNhanvien";
-            this.bt_ViewNhanvien.Size = new System.Drawing.Size(83, 32);
+            this.bt_ViewNhanvien.Size = new System.Drawing.Size(111, 39);
             this.bt_ViewNhanvien.TabIndex = 0;
             this.bt_ViewNhanvien.Text = "Hiển thị";
             this.bt_ViewNhanvien.UseVisualStyleBackColor = true;
+            this.bt_ViewNhanvien.Click += new System.EventHandler(this.bt_ViewNhanvien_Click);
             // 
-            // dg_ViewNhanvien
+            // dtgvAccount
             // 
-            this.dg_ViewNhanvien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_ViewNhanvien.Location = new System.Drawing.Point(98, 129);
-            this.dg_ViewNhanvien.Name = "dg_ViewNhanvien";
-            this.dg_ViewNhanvien.Size = new System.Drawing.Size(662, 324);
-            this.dg_ViewNhanvien.TabIndex = 1;
+            this.dtgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvAccount.Location = new System.Drawing.Point(131, 159);
+            this.dtgvAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtgvAccount.Name = "dtgvAccount";
+            this.dtgvAccount.RowHeadersWidth = 51;
+            this.dtgvAccount.Size = new System.Drawing.Size(883, 399);
+            this.dtgvAccount.TabIndex = 1;
+            this.dtgvAccount.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvAccount_CellContentClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(293, 28);
+            this.label1.Location = new System.Drawing.Point(391, 34);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(207, 24);
+            this.label1.Size = new System.Drawing.Size(252, 29);
             this.label1.TabIndex = 2;
             this.label1.Text = "Danh sách nhân viên";
             // 
             // fmAccount
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dg_ViewNhanvien);
+            this.Controls.Add(this.dtgvAccount);
             this.Controls.Add(this.bt_ViewNhanvien);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "fmAccount";
             this.Text = "fmAccount";
             ((System.ComponentModel.ISupportInitialize)(this.USP_RecipeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_ViewNhanvien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -91,7 +98,7 @@
 
         private System.Windows.Forms.BindingSource USP_RecipeBindingSource;
         private System.Windows.Forms.Button bt_ViewNhanvien;
-        private System.Windows.Forms.DataGridView dg_ViewNhanvien;
+        private System.Windows.Forms.DataGridView dtgvAccount;
         private System.Windows.Forms.Label label1;
     }
 }

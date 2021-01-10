@@ -79,3 +79,20 @@ C:\Users\oOOo\Desktop\QLTrasua\QLTrasua\obj\Debug\QLTrasua.pdb
 C:\Users\oOOo\Desktop\QLTrasua\QLTrasua\bin\Debug\QLTrasua.exe.config
 C:\Users\oOOo\Desktop\QLTrasua\QLTrasua\bin\Debug\QLTrasua.exe
 C:\Users\oOOo\Desktop\QLTrasua\QLTrasua\bin\Debug\QLTrasua.pdb
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\bin\Debug\QLTrasua.exe.config
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\bin\Debug\QLTrasua.exe
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\bin\Debug\QLTrasua.pdb
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\obj\Debug\QLTrasua.csprojAssemblyReference.cache
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\obj\Debug\QLTrasua.fmAccount.resources
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\obj\Debug\QLTrasua.fmCash.resources
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\obj\Debug\QLTrasua.fmChangeMoney.resources
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\obj\Debug\QLTrasua.fmLogin.resources
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\obj\Debug\QLTrasua.fmMain.resources
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\obj\Debug\QLTrasua.fmManagement.resources
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\obj\Debug\QLTrasua.fmListBill.resources
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\obj\Debug\QLTrasua.fmMenuFood.resources
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\obj\Debug\QLTrasua.Properties.Resources.resources
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\obj\Debug\QLTrasua.csproj.GenerateResource.cache
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\obj\Debug\QLTrasua.csproj.CoreCompileInputs.cache
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\obj\Debug\QLTrasua.exe
+C:\Users\NGUYEN MINH QUANG\Desktop\Thư mục mới (12)\QLTrasua\QLTrasua\obj\Debug\QLTrasua.pdb
