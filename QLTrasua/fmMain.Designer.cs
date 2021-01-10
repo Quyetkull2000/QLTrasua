@@ -30,8 +30,6 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.quảnLýToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cửaHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nhânViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.danhThuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thựcĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnTable = new System.Windows.Forms.FlowLayoutPanel();
@@ -65,42 +63,31 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1198, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1198, 24);
             this.menuStrip1.TabIndex = 14;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // quảnLýToolStripMenuItem
             // 
-            this.quảnLýToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cửaHàngToolStripMenuItem,
-            this.nhânViênToolStripMenuItem});
+            this.quảnLýToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(62, 21);
-            this.quảnLýToolStripMenuItem.Text = "Quản lý";
-            // 
-            // cửaHàngToolStripMenuItem
-            // 
-            this.cửaHàngToolStripMenuItem.Name = "cửaHàngToolStripMenuItem";
-            this.cửaHàngToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.cửaHàngToolStripMenuItem.Text = "Cửa hàng";
-            // 
-            // nhânViênToolStripMenuItem
-            // 
-            this.nhânViênToolStripMenuItem.Name = "nhânViênToolStripMenuItem";
-            this.nhânViênToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.nhânViênToolStripMenuItem.Text = "Nhân viên";
+            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
+            this.quảnLýToolStripMenuItem.Text = "Quản lý tài khoản";
+            this.quảnLýToolStripMenuItem.Click += new System.EventHandler(this.quảnLýToolStripMenuItem_Click);
             // 
             // danhThuToolStripMenuItem
             // 
+            this.danhThuToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.danhThuToolStripMenuItem.Name = "danhThuToolStripMenuItem";
-            this.danhThuToolStripMenuItem.Size = new System.Drawing.Size(72, 21);
+            this.danhThuToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.danhThuToolStripMenuItem.Text = "Danh thu";
             this.danhThuToolStripMenuItem.Click += new System.EventHandler(this.danhThuToolStripMenuItem_Click);
             // 
             // thựcĐơnToolStripMenuItem
             // 
+            this.thựcĐơnToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thựcĐơnToolStripMenuItem.Name = "thựcĐơnToolStripMenuItem";
-            this.thựcĐơnToolStripMenuItem.Size = new System.Drawing.Size(74, 21);
+            this.thựcĐơnToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.thựcĐơnToolStripMenuItem.Text = "Thực đơn";
             this.thựcĐơnToolStripMenuItem.Click += new System.EventHandler(this.thựcĐơnToolStripMenuItem_Click);
             // 
@@ -118,9 +105,9 @@
             // 
             this.panel1.Controls.Add(this.pnTable);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 25);
+            this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(410, 515);
+            this.panel1.Size = new System.Drawing.Size(410, 516);
             this.panel1.TabIndex = 15;
             // 
             // pnFood
@@ -149,9 +136,9 @@
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(836, 25);
+            this.panel3.Location = new System.Drawing.Point(836, 24);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(362, 515);
+            this.panel3.Size = new System.Drawing.Size(362, 516);
             this.panel3.TabIndex = 16;
             // 
             // btnCheckOut
@@ -263,8 +250,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem quảnLýToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cửaHàngToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nhânViênToolStripMenuItem;
         private System.Windows.Forms.FlowLayoutPanel pnTable;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel pnFood;

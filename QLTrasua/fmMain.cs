@@ -16,6 +16,8 @@ namespace QLTrasua
     {
         private string userName;
         private string typeAccount;
+        private Account loginAccount;
+
         public string TypeAccount { get => typeAccount; set => typeAccount = value; }
         public string UserName { get => userName; set => userName = value; }
 
@@ -33,9 +35,11 @@ namespace QLTrasua
             LoadCate();
             this.userName = userName;
             this.typeAccount = type;
-            if (typeAccount == "1") menuStrip1.Enabled = true;
-            else menuStrip1.Enabled = false;
+            if (typeAccount == "1") quảnLýToolStripMenuItem.Enabled = true; //Phân quyền tài khoản, nếu type = 1 (database) thì cấp quyền admin
+            else quảnLýToolStripMenuItem.Enabled = false;
         }
+
+       
         #region Method
 
         void LoadFoodListByCategoryID(int id)
@@ -259,37 +263,16 @@ namespace QLTrasua
         private void thựcĐơnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fmMenuFood Doanhthu = new fmMenuFood();
-            //Doanhthu.InsertFood += f_InsertFood;
-            //Doanhthu.UpdateFood += f_UpdateFood;
-            //Doanhthu.DeleteFood += f_DeleteFood;
             Doanhthu.ShowDialog();
 
         }
 
-
-        //MENU FOOD
-        //void f_UpdateFood(object sender, EventArgs e)
-        //{
-        //    LoadFoodListByCategoryID(((sender as Button).Tag as Category).ID);
-        //    if (lsvBill.Tag != null)
-        //        ShowBill((lsvBill.Tag as Table).ID);
-        //}
-
-        //void f_DeleteFood(object sender, EventArgs e)
-        //{
-        //    LoadFoodListByCategoryID(((sender as Button).Tag as Category).ID);
-        //    if (lsvBill.Tag != null)
-        //        ShowBill((lsvBill.Tag as Table).ID);
-        //    LoadTable();
-        //}
-
-        //void f_InsertFood(object sender, EventArgs e)
-        //{
-        //    LoadFoodListByCategoryID(((sender as Button).Tag as Category).ID);
-        //    if (lsvBill.Tag != null)
-        //        ShowBill((lsvBill.Tag as Table).ID);
-        //}
-
+        private void quảnLýToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fmAccount Doanhthu = new fmAccount();
+            Doanhthu.ShowDialog();
+        }
+    
     }
 }
 #endregion

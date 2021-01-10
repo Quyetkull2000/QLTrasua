@@ -122,14 +122,14 @@ Insert into Food values
 GO
 
 Insert into Bill values
-	(GETDATE(),null,1,0), --Checkin/Checkout/idTable/status(1-Checkout rồi/0-Chưa Checkout)
+	(GETDATE(),null,1,0), 
 	(GETDATE(),null,2,0),
 	(GETDATE(),null,3,1),
 	(GETDATE(),null,4,1),
 	(GETDATE(),null,5,0),
 	(GETDATE(),null,6,1),
 	(GETDATE(),null,7,0),
-	(GETDATE(),null,8,1),
+	(GETDATE(),null,8,1),    --Checkin/Checkout/idTable/status(1-Checkout rồi/0-Chưa Checkout)
 	(GETDATE(),null,9,0),
 	(GETDATE(),null,10,1),
 	(GETDATE(),null,11,0),

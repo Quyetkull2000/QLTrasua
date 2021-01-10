@@ -21,6 +21,25 @@ namespace QLTrasua.DAO
 
         private AccountDAO() { }
 
+        public bool Login(string UserName, string PassWord)
+        {
+            string query = "Select * from dbo.Account where UserName =N'" + UserName + "' and PassWord ='" + PassWord + "'";
+
+            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { UserName, CryptoPassword(PassWord) });
+
+            return result.Rows.Count > 0;
+        }
+
+
+
+
+
+
+
+
+
+
+
         public string CryptoPassword(string PassWord)
         {
             byte[] temp = ASCIIEncoding.ASCII.GetBytes(PassWord);
@@ -35,15 +54,7 @@ namespace QLTrasua.DAO
             return hasPass;
         }
 
-        public bool Login(string UserName, string PassWord)
-        {
-            string query = "Select * from dbo.Account where UserName =N'" + UserName + "' and PassWord ='" + PassWord + "'";
-
-            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { UserName, CryptoPassword(PassWord) });
-
-            return result.Rows.Count > 0;
-        }
-
+       
         public bool UpdateAccount(string UserName, string displayName, string PassWord, int type)
         {
             string qr = string.Format("" +
@@ -73,7 +84,7 @@ namespace QLTrasua.DAO
 
         public Account GetAccountByUserName(string UserName)
         {
-            DataTable data = DataProvider.Instance.ExecuteQuery("Select * from account where UserName = '" + UserName + "'");
+            DataTable data = DataProvider.Instance.ExecuteQuery("Select * from Account where UserName= '" + UserName + "'");
 
             foreach (DataRow item in data.Rows)
             {
