@@ -121,7 +121,7 @@ namespace QLTrasua
         //Báo cáo
         private void btnViewReport_Click(object sender, EventArgs e)
         {
-            dtgvListFoodSold.DataSource = FoodDAO.Instance.GetListFoodSold(dtpkReportFrom.Value, dtpkReportTo.Value);
+            //dtgvListFoodSold.DataSource = FoodDAO.Instance.GetListFoodSold(dtpkReportFrom.Value, dtpkReportTo.Value);
             dtgvListFoodSold.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dtgvListFoodSold.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dtgvListFoodSold.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -398,7 +398,7 @@ namespace QLTrasua
         }
         void Tab3()
         {
-            dtgvListFoodSold.DataSource = FoodDAO.Instance.GetListFoodSold(dtpkReportFrom.Value, dtpkReportTo.Value);
+            //dtgvListFoodSold.DataSource = FoodDAO.Instance.GetListFoodSold(dtpkReportFrom.Value, dtpkReportTo.Value);
 
             dtgvListFoodSold.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dtgvListFoodSold.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;

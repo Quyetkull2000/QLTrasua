@@ -158,5 +158,22 @@ namespace QLTrasua
             remove { updateFood -= value; }
         }
         #endregion
+
+        private void dtgvFood_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        // TÌM KIẾM LISTFOOD THEO ID CATEGORY   
+        List<Food> SearchFoodById(string idCategory)
+        {
+            List<Food> listFood = new List<Food>();
+            FoodDAO.Instance.SearFoodById(idCategory);
+            return listFood;
+        }
+        private void btnSearchFood_Click(object sender, EventArgs e)
+        {
+            SearchFoodById(txbSearchFoodName.Text);
+        }
     }
 }

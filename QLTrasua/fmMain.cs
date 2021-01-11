@@ -78,8 +78,8 @@ namespace QLTrasua
             {
                 Button btnFood = new Button()
                 {
-                    Width = 160,
-                    Height = 90,
+                    Width = 130,
+                    Height = 70,
                     BackColor = Color.PaleGoldenrod,
                     Text = item.Name + Environment.NewLine + item.Price
                 };
@@ -152,7 +152,7 @@ namespace QLTrasua
             {
                 Button btnCate = new Button()
                 {
-                    Width = 100,
+                    Width = 120,
                     Height = 60,
                     BackColor = Color.BurlyWood,
                     Text = item.Name + Environment.NewLine
@@ -259,7 +259,23 @@ namespace QLTrasua
             fmAccount Doanhthu = new fmAccount();
             Doanhthu.ShowDialog();
         }
-    
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fmLogin logout = new fmLogin();
+            this.Hide();
+            logout.ShowDialog();
+        }
+
+        private void fmMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
 #endregion

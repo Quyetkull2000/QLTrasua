@@ -23,9 +23,8 @@ namespace QLTrasua.DAO
 
         public bool Login(string UserName, string PassWord)
         {
-            string query = "Select * from dbo.Account where UserName =N'" + UserName + "' and PassWord ='" + PassWord + "'";
-
-            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { UserName, CryptoPassword(PassWord) });
+            // THỦ TỤC LOGIN
+            DataTable result = DataProvider.Instance.ExecuteQuery("EXEC sp_Login @userName , @password", new object[] { UserName,PassWord/* CryptoPassword(PassWord) */}); 
 
             return result.Rows.Count > 0;
         }
@@ -34,7 +33,7 @@ namespace QLTrasua.DAO
 
         public DataTable GetListAccount()
         {
-            return DataProvider.Instance.ExecuteQuery("Select Username, Displayname, Type from Account");
+            return DataProvider.Instance.ExecuteQuery("Select * From View_Nhanvien");  // KHUNG NHÌN HIỂN THỊ DANH SÁCH NHÂN VIÊN
         }
 
 
@@ -79,7 +78,7 @@ namespace QLTrasua.DAO
 
         public Account GetAccountByUserName(string UserName)
         {
-            DataTable data = DataProvider.Instance.ExecuteQuery("Select * from Account where UserName= '" + UserName + "'");
+            DataTable data = DataProvider.Instance.ExecuteQuery("EXEC sp_GetAccount @username ", new object[] { UserName});  // Thủ tục lấy DS tài khoản 
 
             foreach (DataRow item in data.Rows)
             {

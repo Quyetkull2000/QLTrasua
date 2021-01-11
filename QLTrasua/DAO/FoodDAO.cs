@@ -41,7 +41,7 @@ namespace QLTrasua.DAO
         {
             List<Food> list = new List<Food>();
 
-            string query = "select * from Food";
+            string query = "select * from View_ListFood";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -59,9 +59,29 @@ namespace QLTrasua.DAO
             return DataProvider.Instance.ExecuteQuery("SELECT a.ID, a.Name AS [Tên], b.Name AS [Danh mục], a.Price AS [Giá] FROM Food as a, FoodCategory as b WHERE a.idCategory = b.ID");
         }
 
-        public DataTable SearchFoodByName(string name)
+        public List<Food> SearFoodById(string idCategory)
         {
-            string query = string.Format("SELECT ID AS [ID], Name AS [Tên], Name AS [Danh mục], Price AS [Giá] FROM dbo.Food WHERE dbo.fuConvertToUnsign1(name) LIKE N'%' + dbo.fuConvertToUnsign1(N'{0}') + '%'", name);
+            List<Food> list = new List<Food>();
+
+            string query = "Select * from ListFood('"+ idCategory + "')";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Food food = new Food(item);
+                list.Add(food);
+            }
+
+            return list;
+        }
+
+
+
+        public DataTable SearchFoodByName(string idCategory)
+        {
+            string query = string.Format("Select * from ListFood('" + idCategory + "')");
+            //string query = string.Format("SELECT ID AS [ID], Name AS [Tên], Name AS [Danh mục], Price AS [Giá] FROM dbo.Food WHERE dbo.fuConvertToUnsign1(name) LIKE N'%' + dbo.fuConvertToUnsign1(N'{0}') + '%'", name);
             return (DataProvider.Instance.ExecuteQuery(query));
         }
 
@@ -99,16 +119,7 @@ namespace QLTrasua.DAO
             return result > 0;
         }
 
-        public DataTable GetListFoodSold(DateTime dateFrom, DateTime dateTo)
-        {
-            string qr = string.Format("SET DATEFORMAT dmy " +
-                "SELECT c.name as [Tên món], SUM(b.count) as [Số lượng bán], FORMAT(c.price, '#,### VNĐ') as [Đơn giá], FORMAT(SUM(b.count) * c.price, '#,### VNĐ') as [Tổng tiền] " +
-                "FROM Bill a, BillInfo b, Food c " +
-                "WHERE a.id = b.idBill AND b.idFood = c.id AND DateCheckIn >= '{0} 00:00:01' AND DateCheckOut <= '{1} 23:59:59' " +
-                "GROUP BY c.name, c.price " +
-                "ORDER BY c.name", dateFrom.ToShortDateString(), dateTo.ToShortDateString());
-            return DataProvider.Instance.ExecuteQuery(qr);
-        }
+      
 
         public bool InsertFood(string name, int id, float price)
         {
@@ -135,5 +146,16 @@ namespace QLTrasua.DAO
 
             return result > 0;
         }
+
+        //public DataTable GetListFoodSold(DateTime dateFrom, DateTime dateTo)
+        //{
+        //    string qr = string.Format("SET DATEFORMAT dmy " +
+        //        "SELECT c.name as [Tên món], SUM(b.count) as [Số lượng bán], FORMAT(c.price, '#,### VNĐ') as [Đơn giá], FORMAT(SUM(b.count) * c.price, '#,### VNĐ') as [Tổng tiền] " +
+        //        "FROM Bill a, BillInfo b, Food c " +
+        //        "WHERE a.id = b.idBill AND b.idFood = c.id AND DateCheckIn >= '{0} 00:00:01' AND DateCheckOut <= '{1} 23:59:59' " +
+        //        "GROUP BY c.name, c.price " +
+        //        "ORDER BY c.name", dateFrom.ToShortDateString(), dateTo.ToShortDateString());
+        //    return DataProvider.Instance.ExecuteQuery(qr);
+        //}
     }
 }

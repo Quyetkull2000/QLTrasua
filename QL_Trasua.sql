@@ -51,6 +51,14 @@ CREATE TABLE Bill
 )
 GO
 
+--Thêm trường totalPrice vào bảng Bill
+Alter table Bill 
+	ADD totalPrice float
+
+Go
+
+
+
 CREATE TABLE BillInfo
 (
 	id INT IDENTITY PRIMARY KEY,
@@ -151,27 +159,47 @@ Insert into BillInfo values
 	(1,6,2),  
 	(2,8,3), 
 	(3,7,4),
-	(2,8,3), 
-	(2,8,3), 
-	(2,8,3), 
-	(2,8,3), 
-	(2,8,3), 
-	(2,8,3),     --idBill / idFood / count(SL)
-	(2,8,3), 
-	(2,8,3), 
-	(2,8,3), 
-	(2,8,3), 
-	(2,8,3), 
-	(2,8,3), 
-	(2,8,3), 
-	(2,8,3)
+	(4,1,3), 
+	(5,2,2), 
+	(6,3,1), 
+	(7,4,3), 
+	(8,5,6), 
+	(9,9,3),     --idBill / idFood / count(SL)
+	(10,11,2), 
+	(11,10,1), 
+	(12,13,3), 
+	(13,12,4), 
+	(14,15,3), 
+	(15,14,2)
+	
 
 GO
 
+			-- VIEW
+
+-- Tạo khung nhìn thực đơn gồm id, tên và giá món ăn
+Create View View_ListFood
+AS
+	Select  * From Food
+
+select * from View_ListFood
+
+Go
+
+-- Tạo khung nhìn danh sách nhân viên 
+Create View View_Nhanvien
+As
+	Select UserName 
+	from Account
+	Where Type= '0'
+
+Select * From View_Nhanvien
+
+
 			-- STORED PRODURES
 
---Lấy thông tin người dùng có username là giá trị nhập vào
-CREATE PROC sp_GetAccount @username nvarchar(100)
+--Thủ tục đưa ra tất cả thông tin tài khoản có username là tham số truyền vào
+CREATE PROC sp_GetAccount  @username nvarchar(100)
 AS
 	BEGIN
 		Select * from Account where UserName= @username
@@ -190,6 +218,7 @@ Begin
 	Select * from Account Where UserName= @userName and PassWord= @passWord
 End
 
+EXEC sp_Login @userName= N'Quyetkull',@passWord= N'Quyetkull2000'
 Go
 
 -- Lấy ra DS các bàn ăn
@@ -197,40 +226,18 @@ Create Proc sp_GetTableList
 As
 	Select * from TableFood
 
---Update TableFood set status= N'Có người' where id= 8
-
 Exec sp_GetTableList
 
 Go
 
---select * from Bill where idTable=3 and status =1
-
---Select Food.name, BillInfo.count, Food.price, Food.price*BillInfo.count as totalPrice from BillInfo, Bill, Food where BillInfo.idBill = Bill.id and BillInfo.idFood = Food.id and Bill.idTable= 2
-
---Select f.name , bi.count , f.price, f.price*bi.count as totalPrice from BillInfo as bi, Bill as b, Food as f where bi.idBill = b.id and bi.idFood = f.id and b.idTable= 2
-
-GO
-
--- View Food
-CREATE VIEW View_ListFood(id,name)
-AS
-SELECT id,name
-FROM Food
-
-select * from View_ListFood
-
-
-
---select * from Food where idCategory = 2
-
---select * from FoodCategory
 
 Go
 -- Thêm món vào Bill
 create proc sp_InsertBill @idTable int
 As
 Begin
-	Insert Bill(DateCheckIn,DateCheckOut,idTable,status) values (GETDATE(),null,@idTable,0)
+	Insert Bill(DateCheckIn,DateCheckOut,idTable,status) 
+	Values (GETDATE(),null,@idTable,0)
 End
 
 Go
@@ -239,16 +246,27 @@ Create Proc sp_BillInfo
 @idBill int, @idFood int, @count int
 As
 Begin
-	Insert BillInfo(idBill,idFood,count) Values (@idBill,@idFood,@count)
+	Insert BillInfo(idBill,idFood,count) 
+	 Values (@idBill,@idFood,@count)
 End
-
---SELECT ID, Name AS Tên FROM FoodCategory
-
-delete BillInfo
-delete Bill
 
 Go
 
+
+--Lấy ra danh sách hóa đơn theo ngày người dùng nhập vào
+Create Proc sp_GetListTable  @DateCheckIn date, @DateCheckOut date
+As
+Begin 
+	Select TableFood.name as 'Tên bàn', Bill.totalPrice as 'Tổng tiền', DateCheckIn as 'Ngày vào', DateCheckOut as 'Ngày ra'
+	from Bill, TableFood
+	Where DateCheckIn= @DateCheckIn and DateCheckOut= @DateCheckOut and Bill.status=1 and TableFood.id= Bill.idTable
+End
+
+Go
+
+			-- TRIGGER	
+
+--Trigger cập nhật status khi bàn đó cập nhật bill
 CREATE TRIGGER UpdateBillInfo
 On BillInfo for insert, update
 as
@@ -261,6 +279,7 @@ begin
 	Update TableFood set status = N'Có người' where id = @idTable
 End
 go
+
 
 Create TRIGGER UpdateBill
 On Bill for update
@@ -279,21 +298,37 @@ end
 
 Go
 
---Thêm trường totalPrice vào bảng Bill
-Alter table Bill 
-	ADD totalPrice float
+			-- FUNCTION
+CREATE FUNCTION SumFood()
+returns int
+as begin
+	declare @SumFood int
+	select @SumFood =(
+		select COUNT(id)
+		From Food)
+	return @SumFood
+END
+
+
 
 Go
-
-
---Lấy ra danh sách hóa đơn theo ngày người dùng nhập vào
-Create Proc sp_GetListTable  @DateCheckIn date, @DateCheckOut date
+Create Function ListFood (@FCategory nvarchar(100))
+returns @Food table (id int, name nvarchar(100), price float)
 As
-Begin 
-	Select TableFood.name as 'Tên bàn', Bill.totalPrice as 'Tổng tiền', DateCheckIn as 'Ngày vào', DateCheckOut as 'Ngày ra'
-	from Bill, TableFood
-	Where DateCheckIn= @DateCheckIn and DateCheckOut= @DateCheckOut and Bill.status=1 and TableFood.id= Bill.idTable
+Begin
+	Insert into @Food
+	Select Food.id, Food.name, Food.price
+	From Food
+	inner join FoodCategory On Food.idCategory = FoodCategory.id
+	Where Food.idCategory= @FCategory
+	return 
 End
 
-Go
+Select * from ListFood('3')
+
+
+
+
+
+
 
